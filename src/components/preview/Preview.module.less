@@ -1,0 +1,356 @@
+.previewPanel {
+  position: relative;
+  flex: none;
+  width: 400px;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 48px;
+  padding-bottom: 16px;
+
+  .iconSetPreviewPosition {
+    position: absolute;
+    left: 80px;
+    top: 12px;
+    opacity: 0.2;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &::before {
+    content: 'プレビュー';
+    font-family: 'Toppan Bunkyu Midashi Mincho';
+    font-size: 16px;
+    position: absolute;
+    top: 16px;
+  }
+}
+
+.preview {
+  height: 100%;
+  overflow: auto;
+}
+
+.content {
+  width: 100%;
+  min-height: var(--preview-min-height);
+  height: var(--preview-height);
+  padding: 16px;
+  font-size: var(--preview-font-size);
+  white-space: pre-wrap;
+  text-align: justify;
+  overflow: auto;
+  user-select: text;
+  transition: all 150ms ease;
+
+  color: var(--preview-text-color);
+  background-color: var(--preview-background-color);
+  font-family: var(--preview-font-family);
+  writing-mode: var(--preview-writing-mode);
+
+  &:empty::after {
+    content: 'データを入力してください。';
+    opacity: 0.3;
+    font-size: smaller;
+  }
+}
+
+// 预览配置
+:global {
+  .writing-mode-horizontal .text-block {
+    letter-spacing: 1px;
+  }
+  .writing-mode-vertical .text-block {
+    letter-spacing: 2px;
+  }
+
+  .text-block {
+    margin-block-start: 12px;
+    margin-block-end: 12px;
+
+    &:has(.text-title) {
+      margin-block-start: 24px;
+      margin-block-end: 16px;
+    }
+
+    &:first-child {
+      margin-block-start: 4px;
+      margin-block-end: 12px;
+
+      &:has(.text-bold),
+      &:has(.text-title) {
+        margin-block-end: 24px;
+      }
+    }
+
+    &:last-child {
+      margin-block-end: 0 !important;
+    }
+  }
+
+  // 文本片段
+  .text-piece {
+    margin-block: 8px;
+    word-break: break-word;
+    line-height: var(--preview-line-height);
+
+    &:has(> .text-no-hurigana:only-child, > .text-zh-font:only-child) {
+      line-height: 1.5;
+    }
+
+    &:first-child {
+      margin-block-start: 0px;
+    }
+
+    &:last-child {
+      margin-block-end: 0 !important;
+    }
+
+    ruby {
+      rt {
+        font-weight: normal;
+        color: var(--preview-text-color);
+        outline: none;
+
+        &:hover {
+          outline: 1px dotted var(--preview-fluorescent-color);
+        }
+
+        &:empty::before {
+          width: 100%;
+          content: '__';
+          opacity: 0;
+          cursor: text;
+        }
+      }
+    }
+  }
+
+  // 标题化
+  .text-title {
+    width: fit-content;
+    height: fit-content;
+    color: var(--preview-highlight-color);
+    font-weight: bold;
+  }
+
+  // 文字加粗
+  .text-bold {
+    font-weight: bold;
+  }
+
+  // 文字高亮 (L1)
+  .text-highlight {
+    color: var(--preview-highlight-color);
+  }
+
+  // 文字高亮 (L2)
+  .text-highlight-2 {
+    color: var(--preview-highlight-color-2);
+  }
+
+  // 文字颜色减弱
+  .text-dimmed {
+    opacity: 0.65;
+  }
+
+  // 文字荧光色　(背景)
+  .text-fluorescent {
+    background-color: var(--preview-fluorescent-color);
+    padding-inline: 2px;
+
+    &:not(:first-child) {
+      margin-inline-start: 2px;
+    }
+    &:not(:last-child) {
+      margin-inline-end: 2px;
+    }
+    &:only-child {
+      margin-inline: 2px;
+    }
+  }
+
+  // `.text-fluorescent` 直接跟在　`.text-fill` 后面
+  .text-fill + .text-fluorescent {
+    margin-inline-start: 0;
+  }
+
+  // `.text-fluorescent` 后面直接跟着　`.text-fill`
+  .text-fluorescent:has(+ .text-fill) {
+    margin-inline-end: 0;
+  }
+
+  // 文字荧光色　(下划线)
+  .text-fluorescent-underline {
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: 5px;
+    text-decoration-color: var(--preview-fluorescent-underline-color);
+    text-decoration-skip-ink: none;
+  }
+
+  .with-hurigana .text-fluorescent-underline {
+    text-decoration: none;
+    border-block-end: 5px solid var(--preview-fluorescent-underline-color);
+  }
+
+  // 背景填充
+  .text-fill {
+    color: var(--preview-highlight-invert-color);
+    background-color: var(--preview-highlight-color);
+    padding-inline: 2px;
+
+    .text-highlight {
+      color: inherit;
+    }
+  }
+
+  // 文字描边
+  .text-stroke {
+    outline: 1.5px solid var(--preview-text-stroke-color);
+    padding-inline: 4px;
+    padding-block: 2px;
+
+    &:not(:first-child) {
+      margin-inline-start: 4px;
+    }
+    &:not(:last-child) {
+      margin-inline-end: 4px;
+    }
+    &:only-child {
+      margin-inline: 4px;
+    }
+    &:has(ruby) {
+      padding-block-start: 12px;
+    }
+  }
+
+  // 下划线
+  .text-underline {
+    border-block-end: 2px solid var(--preview-highlight-color);
+    padding-block-end: var(--preview-text-underline-offset);
+
+    &-solid {
+      border-block-end-style: solid;
+    }
+
+    &-dashed {
+      border-block-end-style: dashed;
+      border-block-end-color: var(--preview-highlight-color-weak);
+    }
+
+    &-dotted {
+      border-block-end-style: dotted;
+      border-block-end-color: var(--preview-highlight-color-weak);
+    }
+
+    & + .text-underline {
+      margin-inline-start: 4px;
+    }
+  }
+
+  // 下划线 (波浪形)
+  .text-wavy {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: var(--preview-text-wavy-color);
+    text-underline-offset: var(--preview-text-underline-offset);
+    text-decoration-thickness: 1px;
+    text-decoration-skip-ink: none;
+  }
+
+  .text-line-through {
+    text-decoration: line-through;
+    text-decoration-color: var(--preview-text-delete-color);
+    text-decoration-thickness: 2px;
+  }
+
+  .text-size-incr-2px {
+    font-size: calc(var(--preview-font-size) + 2px);
+  }
+
+  .text-size-incr-4px {
+    font-size: calc(var(--preview-font-size) + 4px);
+  }
+
+  .text-size-incr-6px {
+    font-size: calc(var(--preview-font-size) + 6px);
+  }
+
+  .text-size-decr-2px {
+    font-size: calc(var(--preview-font-size) - 2px);
+  }
+
+  .text-size-decr-4px {
+    font-size: calc(var(--preview-font-size) - 4px);
+  }
+
+  .text-size-decr-6px {
+    font-size: calc(var(--preview-font-size) - 6px);
+  }
+
+  .text-no-hurigana,
+  .text-zh-font {
+    ruby {
+      rt {
+        display: none;
+      }
+    }
+  }
+
+  // 宋体（简）
+  .text-song-sc {
+    font-family: 'Source Han Serif CN', 'Source Han Serif SC', 'Songti SC';
+  }
+
+  // 楷体（简）
+  .text-kaiti-sc {
+    font-family: 'Kaiti SC';
+  }
+
+  // 楷体（今）
+  .text-kaiti-jin {
+    font-family: 'TsangerJinKai03', 'TsangerJinKai02', 'TsangerJinKai01', 'DeDaoJinKai';
+  }
+
+  // 隶书（简）
+  .text-baoli-sc {
+    font-family: 'Baoli SC';
+  }
+
+  // 黑体（兰）
+  .text-heiti-lan {
+    font-family: 'Lantinghei SC';
+  }
+
+  // 平方（简）
+  .text-pingfang-sc {
+    font-family: 'PingFang SC';
+  }
+
+  // 宋体（京华老宋体）
+  .text-song-king-hwa {
+    font-family: 'KingHwa_OldSong';
+  }
+
+  // 游明朝体
+  .text-yumincho {
+    font-family: 'YuMincho';
+  }
+
+  // 游明朝体 (+36p Kana)
+  .text-yumincho-36p-kana {
+    font-family: 'YuMincho +36p Kana';
+  }
+
+  // 凸版文久黑体 (粗)
+  .text-toppan-bunkyu-midashi-gothic {
+    font-family: 'Toppan Bunkyu Midashi Gothic';
+  }
+
+  // 凸版文久明朝体 (粗)
+  .text-toppan-bunkyu-midashi-mincho {
+    font-family: 'Toppan Bunkyu Midashi Mincho';
+  }
+}

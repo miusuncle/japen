@@ -1,0 +1,18 @@
+.root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 20px;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0 16px;
+  overflow: hidden;
+  overflow-x: auto;
+
+  &.previewLeft {
+    flex-direction: row-reverse;
+    gap: 12px;
+  }
+}

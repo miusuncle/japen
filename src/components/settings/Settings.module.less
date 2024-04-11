@@ -1,0 +1,50 @@
+.settingsPanel {
+  flex: 1;
+  min-width: 640px;
+  max-width: 900px;
+  overflow-y: auto;
+}
+
+.settings {
+  padding: 8px;
+  height: 100%;
+
+  :global(.ant-form-item) {
+    margin-bottom: 12px;
+  }
+
+  :global(.ant-form-item-label) {
+    position: sticky;
+    top: -2px;
+    z-index: 10;
+    padding-top: 8px;
+    padding-bottom: 0;
+    margin-bottom: 8px;
+    background-color: var(--ant-color-bg-container);
+
+    label {
+      font-family: 'Toppan Bunkyu Midashi Mincho';
+      font-size: 16px;
+    }
+  }
+}
+
+.actionArea {
+  position: sticky;
+  bottom: 0;
+  padding: 16px 0;
+  margin-bottom: 0 !important;
+  background: var(--ant-color-bg-container);
+  z-index: 10;
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height: 100%;
+    left: -2px;
+    top: 0;
+    background-color: inherit;
+  }
+}

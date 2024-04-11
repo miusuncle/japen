@@ -1,0 +1,1 @@
+export { createTinyStore } from './createTinyStore';

@@ -1,0 +1,34 @@
+.toolbar {
+  border: var(--ant-line-width) var(--ant-line-type) var(--ant-color-border);
+  border-radius: var(--ant-border-radius);
+  overflow: hidden;
+
+  :global {
+    button {
+      &.ant-btn-link {
+        color: var(--ant-color-text-light-solid);
+        background-color: var(--ant-color-primary);
+
+        &:hover {
+          color: var(--ant-color-text-light-solid) !important;
+          background-color: var(--ant-color-primary-hover) !important;
+        }
+      }
+
+      .ant-btn-icon > span {
+        font-weight: bold;
+
+        &.fluorescent-underline {
+          text-decoration: underline;
+          text-decoration-style: solid;
+          text-decoration-thickness: 5px;
+          text-decoration-color: var(--preview-fluorescent-underline-color);
+        }
+      }
+
+      &:disabled .ant-btn-icon > span {
+        color: inherit !important;
+      }
+    }
+  }
+}
