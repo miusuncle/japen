@@ -11,6 +11,7 @@
     "vscode-extension",
     ".git/objects",
     ".vscode",
+    ".prettierrc",
     ".vscode-insiders",
     "assets"
   ],
