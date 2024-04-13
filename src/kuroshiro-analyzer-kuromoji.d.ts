@@ -74,7 +74,7 @@ interface TokenizedEntry {
    * 基本形
    * @example '黒白'
    */
-  basic_form: '黒白';
+  basic_form: string;
 
   /**
    * 読み
