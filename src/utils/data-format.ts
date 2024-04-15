@@ -1,3 +1,3 @@
-import dateFormat from 'dateformat'
+import dateFormat from 'dateformat';
 
-export { dateFormat }
+export { dateFormat };
