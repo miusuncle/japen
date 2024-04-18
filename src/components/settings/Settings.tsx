@@ -29,6 +29,7 @@ import { themeList, fontFamilyList, writingModeList, textNotations } from '@/con
 import { exampleList } from '@/configs/example';
 import { encrypt, copyText, copyFile, downloadFile } from '@/utils';
 import { preface } from '@/helpers';
+import fontFaces from '@/styles/font-face.less?inline';
 import { ContentHelp } from './ContentHelp';
 import { ContentToolbar } from './ContentToolbar';
 import cssStyles from './Settings.module.less';
@@ -90,6 +91,7 @@ export function Settings() {
         height,
         canvasWidth: width * scale,
         canvasHeight: height * scale,
+        fontEmbedCSS: fontFaces,
       };
 
       const blob = await html2Image.toBlob(previewContentDom, options);

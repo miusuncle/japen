@@ -7,7 +7,6 @@ import {
   themeCollection,
   themeCssVars,
   writingModeCssVars,
-  fontFamilyCollection,
   EWritingMode,
 } from '@/configs/settings';
 import { useGlobalStore } from '@/store/global';
@@ -41,10 +40,7 @@ export function App() {
             ...themeCssVars[settings.theme],
             ...writingModeCssVars[settings.writingMode],
             ...{
-              '--preview-font-family': [
-                fontFamilyCollection.entities[settings.fontFamily]?.fontFamily,
-                DEFAULT_FONT_FAMILY,
-              ]
+              '--preview-font-family': [`"${settings.fontFamily}"`, DEFAULT_FONT_FAMILY]
                 .filter(Boolean)
                 .join(', '),
               '--preview-writing-mode': settings.writingMode,

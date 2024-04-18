@@ -2,6 +2,7 @@ import { escapeRegExp } from 'lodash';
 import React from 'react';
 import { FontSizeOutlined } from '@ant-design/icons';
 import { createEntityCollection } from '@/utils';
+import { EFontFamily } from '@/configs/settings';
 
 interface ITextNotationBase {
   group: 1 | 2 | 3 | 4;
@@ -389,7 +390,7 @@ const baseTextNotations: ITextNotationBase[] = [
     markClass: 'text-song-sc',
     icon: (
       <span>
-        <span style={{ fontFamily: 'Songti SC' }}>{'宋'}</span>
+        <span style={{ fontFamily: `"${EFontFamily.SONGTI_SC}"` }}>{'宋'}</span>
         <sup style={{ fontSize: 9 }}>{'简'}</sup>
         <sub style={{ fontSize: 9, position: 'relative', left: -9 }}>{'❶'}</sub>
       </span>
@@ -406,7 +407,7 @@ const baseTextNotations: ITextNotationBase[] = [
     markClass: 'text-kaiti-sc',
     icon: (
       <span>
-        <span style={{ fontFamily: 'Kaiti SC' }}>{'楷'}</span>
+        <span style={{ fontFamily: `"${EFontFamily.KAITI_SC}"` }}>{'楷'}</span>
         <sup style={{ fontSize: 9 }}>{'简'}</sup>
         <sub style={{ fontSize: 9, position: 'relative', left: -9 }}>{'❷'}</sub>
       </span>
@@ -423,7 +424,7 @@ const baseTextNotations: ITextNotationBase[] = [
     markClass: 'text-kaiti-jin',
     icon: (
       <span>
-        <span style={{ fontFamily: 'DeDaoJinKai' }}>{'楷'}</span>
+        <span style={{ fontFamily: `"${EFontFamily.KAITI_JIN}"` }}>{'楷'}</span>
         <sup style={{ fontSize: 9 }}>{'今'}</sup>
         <sub style={{ fontSize: 9, position: 'relative', left: -9 }}>{'❸'}</sub>
       </span>
@@ -440,7 +441,7 @@ const baseTextNotations: ITextNotationBase[] = [
     markClass: 'text-baoli-sc',
     icon: (
       <span>
-        <span style={{ fontFamily: 'Baoli SC' }}>{'隶'}</span>
+        <span style={{ fontFamily: `"${EFontFamily.BAOLI_SC}"` }}>{'隶'}</span>
         <sup style={{ fontSize: 9 }}>{'简'}</sup>
         <sub style={{ fontSize: 9, position: 'relative', left: -9 }}>{'❹'}</sub>
       </span>
@@ -457,7 +458,7 @@ const baseTextNotations: ITextNotationBase[] = [
     markClass: 'text-heiti-lan',
     icon: (
       <span>
-        <span style={{ fontFamily: 'Lantinghei SC' }}>{'黑'}</span>
+        <span style={{ fontFamily: `"${EFontFamily.HEITI_LAN}"` }}>{'黑'}</span>
         <sup style={{ fontSize: 9 }}>{'兰'}</sup>
         <sub style={{ fontSize: 9, position: 'relative', left: -9 }}>{'❺'}</sub>
       </span>
@@ -474,7 +475,7 @@ const baseTextNotations: ITextNotationBase[] = [
     markClass: 'text-pingfang-sc',
     icon: (
       <span>
-        <span style={{ fontFamily: 'PingFang SC' }}>{'平'}</span>
+        <span style={{ fontFamily: `"${EFontFamily.PINGFANG_SC}"` }}>{'平'}</span>
         <sup style={{ fontSize: 9 }}>{'简'}</sup>
         <sub style={{ fontSize: 9, position: 'relative', left: -9 }}>{'❻'}</sub>
       </span>
@@ -491,7 +492,7 @@ const baseTextNotations: ITextNotationBase[] = [
     markClass: 'text-song-king-hwa',
     icon: (
       <span>
-        <span style={{ fontFamily: 'KingHwa_OldSong' }}>{'宋'}</span>
+        <span style={{ fontFamily: `"${EFontFamily.SONGTI_KING_HWA}"` }}>{'宋'}</span>
         <sup style={{ fontSize: 9 }}>{'京'}</sup>
         <sub style={{ fontSize: 9, position: 'relative', left: -9 }}>{'❼'}</sub>
       </span>
@@ -510,7 +511,7 @@ const baseTextNotations: ITextNotationBase[] = [
     markClass: 'text-yumincho',
     icon: (
       <span>
-        <span style={{ fontFamily: 'YuMincho' }}>{'游'}</span>
+        <span style={{ fontFamily: `"${EFontFamily.YUMINCHO}"` }}>{'游'}</span>
         <sup style={{ fontSize: 9 }}>{'明'}</sup>
         <sub style={{ fontSize: 9, position: 'relative', left: -9 }}>{'①'}</sub>
       </span>
@@ -527,7 +528,7 @@ const baseTextNotations: ITextNotationBase[] = [
     markClass: 'text-yumincho-36p-kana',
     icon: (
       <span>
-        <span style={{ fontFamily: '"YuMincho +36p Kana"' }}>{'游'}</span>
+        <span style={{ fontFamily: `"${EFontFamily.YUMINCHO_36P_KANA}"` }}>{'游'}</span>
         <sup style={{ fontSize: 9 }}>{'明'}</sup>
         <sub style={{ fontSize: 9, position: 'relative', left: -9 }}>{'②'}</sub>
       </span>
@@ -544,7 +545,7 @@ const baseTextNotations: ITextNotationBase[] = [
     markClass: 'text-toppan-bunkyu-midashi-gothic',
     icon: (
       <span>
-        <span style={{ fontFamily: '"Toppan Bunkyu Midashi Gothic"' }}>{'凸'}</span>
+        <span style={{ fontFamily: `"${EFontFamily.TOPPAN_BUNKYU_MIDASHI_GOTHIC}"` }}>{'凸'}</span>
         <sup style={{ fontSize: 9 }}>{'黑'}</sup>
         <sub style={{ fontSize: 9, position: 'relative', left: -9 }}>{'③'}</sub>
       </span>
@@ -561,7 +562,7 @@ const baseTextNotations: ITextNotationBase[] = [
     markClass: 'text-toppan-bunkyu-midashi-mincho',
     icon: (
       <span>
-        <span style={{ fontFamily: '"Toppan Bunkyu Midashi Mincho"' }}>{'凸'}</span>
+        <span style={{ fontFamily: `"${EFontFamily.TOPPAN_BUNKYU_MIDASHI_MINCHO}"` }}>{'凸'}</span>
         <sup style={{ fontSize: 9 }}>{'明'}</sup>
         <sub style={{ fontSize: 9, position: 'relative', left: -9 }}>{'④'}</sub>
       </span>
