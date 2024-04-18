@@ -6,7 +6,26 @@ import { createEntityCollection } from '@/utils';
  * @link https://stackoverflow.com/questions/14563064/japanese-standard-web-fonts/14573813#14573813
  * @link https://www.csstux.com/font-family.html
  */
-export const DEFAULT_FONT_FAMILY = `'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', '游ゴシック', '游ゴシック体', YuGothic, 'Yu Gothic', 'メイリオ', Meiryo, 'ＭＳ ゴシック', 'MS Gothic', HiraKakuProN-W3, 'TakaoExゴシック', TakaoExGothic, 'MotoyaLCedar', 'Droid Sans Japanese', sans-serif`;
+export const DEFAULT_FONT_FAMILY = [
+  'ヒラギノ角ゴ ProN',
+  'Hiragino Kaku Gothic ProN',
+  '游ゴシック',
+  '游ゴシック体',
+  'YuGothic',
+  'Yu Gothic',
+  'メイリオ',
+  'Meiryo',
+  'ＭＳ ゴシック',
+  'MS Gothic',
+  'HiraKakuProN-W3',
+  'TakaoExゴシック',
+  'TakaoExGothic',
+  'MotoyaLCedar',
+  'Droid Sans Japanese',
+  'sans-serif',
+]
+  .map(x => `"${x}"`)
+  .join(', ');
 
 export enum EFontFamily {
   /** 游明朝体 */
