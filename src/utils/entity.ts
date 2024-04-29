@@ -48,6 +48,9 @@ export const createEntityCollection = <T>(
 /**
  * 将 EntityCollection 集合转换为普通数组
  */
-export const convertToEntityList = <T>(collection: EntityCollection<T>): T[] => {
-  return collection.list.map(key => collection.entities[key]);
+export const convertToEntityList = <T, V = T>(
+  collection: EntityCollection<T>,
+  transform: (t: T) => V = x => x as unknown as V,
+): V[] => {
+  return collection.list.map(key => transform(collection.entities[key]));
 };
